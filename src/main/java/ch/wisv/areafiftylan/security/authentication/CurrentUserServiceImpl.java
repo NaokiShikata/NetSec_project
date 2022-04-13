@@ -76,6 +76,7 @@ public class CurrentUserServiceImpl implements CurrentUserService {
     }
 
     private boolean isCommittee(User user) {
+
         return hasRole(user, Role.ROLE_COMMITTEE);
     }
 

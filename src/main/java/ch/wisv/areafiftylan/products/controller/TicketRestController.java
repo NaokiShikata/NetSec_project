@@ -131,7 +131,7 @@ public class TicketRestController {
         return ticketService.getAllTransferTickets();
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('USER')")
     @DeleteMapping("{ticketId}")
     public ResponseEntity<?> deleteTicket(@PathVariable Long ticketId) {
         ticketService.removeTicket(ticketId);
@@ -164,7 +164,7 @@ public class TicketRestController {
         return createResponseEntity(HttpStatus.OK, "TicketType successfully updated.", ticketType);
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('OPERATOR')")
     @DeleteMapping("/types/{typeId}")
     public ResponseEntity<?> deleteTicketType(@PathVariable Long typeId) {
         ticketService.deleteTicketType(typeId);
@@ -202,7 +202,7 @@ public class TicketRestController {
         return ticketService.getAllTicketOptions();
     }
 
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('OPERATOR')")
     @DeleteMapping("/options/{optionId}")
     public ResponseEntity<?> deleteTicketOption(@PathVariable Long optionId) {
         ticketService.deleteTicketOption(optionId);
